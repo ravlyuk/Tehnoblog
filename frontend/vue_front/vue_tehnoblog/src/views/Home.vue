@@ -13,7 +13,8 @@
 
                     <!-- Blog Post -->
                     <div v-for="article in listArticle" :key="article.id" class="card mb-4">
-                        <img class="card-img-top" :src="article.picture" alt="Card image cap">
+                        <img class="card-img-top" :src="article.picture" href="#" @click="goTo(article.id)"
+                             alt="Card image cap">
                         <div class="card-body">
                             <h2 class="card-title">
                                 <a href="#" @click="goTo(article.id)">{{ article.title }}</a>
@@ -66,7 +67,8 @@
                     <div class="card my-4">
                         <h5 class="card-header">Виджет сайта</h5>
                         <div class="card-body">
-                            Вы можете поместить все, что захотите, внутрь этих боковых виджетов. Они просты в использовании и оснащены новыми контейнерами для карточек Bootstrap 4!
+                            Вы можете поместить все, что захотите, внутрь этих боковых виджетов. Они просты в
+                            использовании и оснащены новыми контейнерами для карточек Bootstrap 4!
                         </div>
                     </div>
 
