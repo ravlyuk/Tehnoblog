@@ -28,8 +28,12 @@ RUN pip install -r requirements.txt
 # copy entrypoint.sh
 COPY ./entrypoint.sh .
 
+
+
 # copy project
 COPY . .
+
+COPY ./db.sqlite3 .
 
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
