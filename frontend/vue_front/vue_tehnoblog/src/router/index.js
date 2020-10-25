@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import Single from '../views/Single.vue'
 import Rubric from '../views/Rubric.vue'
 
@@ -11,7 +10,7 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        component: Home
+        component: Rubric
     },
     {
         path: '/article/:id',
