@@ -9,7 +9,7 @@
                 <div class="col-lg-8">
 
                     <!-- Title -->
-                    <h1 class="mt-4">{{ article.title }}</h1>
+                    <h3 class="mt-4">{{ article.title }}</h3>
 
                     <!-- Author -->
                     <p class="lead">
