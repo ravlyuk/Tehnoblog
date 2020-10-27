@@ -56,6 +56,7 @@ class ArticleSerialazer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True)
     rating_user = serializers.BooleanField()
     middle_star = serializers.IntegerField()
+    published = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
 
     class Meta:
         model = Article
