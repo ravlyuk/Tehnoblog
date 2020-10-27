@@ -13,14 +13,14 @@
 
                     <!-- Author -->
                     <p class="lead">
-                        by
-                        <a href="#">Start Bootstrap</a>
+                        Автор:
+                        <a href="#">{{ article.name_author }}</a>
                     </p>
 
                     <hr>
 
                     <!-- Date/Time -->
-                    <p>Posted on January 1, 2019 at 12:00 PM</p>
+                    <p>Опубликовано: {{ article.published }}</p>
 
                     <hr>
 
@@ -34,7 +34,7 @@
 
                     <hr>
                     <!-- Comment -->
-                    <Comment :comments="article.comments" :article="article.id" @reload="loadArticle" />
+                    <Comment :comments="article.comments" :article="article.id" @reload="loadArticle"/>
 
 
                 </div>
@@ -42,29 +42,14 @@
                 <!-- Sidebar Widgets Column -->
                 <div class="col-md-4">
 
-                    <!-- Search Widget -->
-                    <div class="card my-4">
-                        <h5 class="card-header">Search</h5>
-                        <div class="card-body">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                                <span class="input-group-append">
-                <button class="btn btn-secondary" type="button">Go!</button>
-              </span>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Sidebar Widgets Column -->
+                    <Search/>
 
-                    <Rubric :rubrics="rubrics"/>
+                    <!-- Sidebar Rubric Column -->
+                    <Rubric :rubrics="rubrics" @page-changed="loadListRubrics"/>
 
-                    <!-- Side Widget -->
-                    <div class="card my-4">
-                        <h5 class="card-header">Side Widget</h5>
-                        <div class="card-body">
-                            You can put anything you want inside of these side widgets. They are easy to use, and
-                            feature the new Bootstrap 4 card containers!
-                        </div>
-                    </div>
+                    <!-- Side Widget Column -->
+                    <Widget/>
 
                 </div>
 
@@ -80,11 +65,13 @@
     import {getRubrics, getSingleArticle} from "../router/requests";
     import Comment from '../components/Comment';
     import Rubric from "../components/Rubric";
+    import Search from "../components/Search";
+    import Widget from "../components/Widget";
 
     export default {
         name: 'Single',
         props: ['id'],
-        components: {Comment, Rubric},
+        components: {Comment, Rubric, Search, Widget},
         data() {
             return {
                 article: {}

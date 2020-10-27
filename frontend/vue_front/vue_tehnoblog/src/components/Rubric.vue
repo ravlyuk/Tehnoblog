@@ -19,11 +19,11 @@
 <script>
 
     export default {
-        name: "Rubric",
+        name: "List",
         props: ['rubrics'],
         methods: {
             goTo(id) {
-                this.$router.push({name: 'Rubric', params: {id: id}})
+                this.$router.push({name: 'List', params: {id: id}})
             },
         }
 

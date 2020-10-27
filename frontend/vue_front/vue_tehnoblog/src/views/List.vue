@@ -10,7 +10,6 @@
                 <!-- Blog Entries Column -->
                 <div class="col-md-8">
 
-
                     <!-- Blog Post -->
                     <div v-for="article in listArticle" :key="article.id" class="card mb-4">
                         <img class="card-img-top" :src="article.picture" alt="Card image cap" href="#"
@@ -44,42 +43,22 @@
 
                 </div>
 
-
-                <!-- Sidebar Widgets Column -->
                 <div class="col-md-4">
 
-                    <!-- Search Widget -->
-                    <div class="card my-4">
-                        <h5 class="card-header">Поиск</h5>
-                        <div class="card-body">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Введите запрос...">
-                                <span class="input-group-append">
-                <button class="btn btn-secondary" type="button">Найти</button>
-              </span>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Sidebar Widgets Column -->
+                    <Search/>
 
+                    <!-- Sidebar Rubric Column -->
                     <Rubric :rubrics="rubrics" @page-changed="loadListRubrics"/>
 
-                    <!-- Side Widget -->
-                    <div class="card my-4">
-                        <h5 class="card-header">Виджет сайта</h5>
-                        <div class="card-body">
-                            Вы можете поместить все, что захотите, внутрь этих боковых виджетов. Они просты в
-                            использовании и оснащены новыми контейнерами для карточек Bootstrap 4!
-                        </div>
-                    </div>
+                    <!-- Side Widget Column -->
+                    <Widget/>
 
                 </div>
-
             </div>
-
-
         </div>
-
     </div>
+
 
 </template>
 
@@ -87,6 +66,8 @@
     import {getRubrics, getArticles} from '../router/requests.js';
     import Pagination from "../components/Pagination";
     import Rubric from "../components/Rubric";
+    import Search from "../components/Search";
+    import Widget from "../components/Widget";
 
     export default {
         name: 'Home',
@@ -101,7 +82,7 @@
                 rubrics: this.rubrics,
             }
         },
-        components: {Pagination, Rubric},
+        components: {Search, Pagination, Rubric, Widget},
         created() {
             this.loadListArticles(this.page);
             this.loadListRubrics();

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Single from '../views/Single.vue'
-import Rubric from '../views/Rubric.vue'
+import List from '../views/List.vue'
 
 
 Vue.use(VueRouter)
@@ -10,7 +10,7 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        component: Rubric
+        component: List
     },
     {
         path: '/article/:id',
@@ -20,8 +20,8 @@ const routes = [
     },
     {
         path: '/rubric/:id',
-        name: 'Rubric',
-        component: Rubric,
+        name: 'List',
+        component: List,
         props: true,
     },
     {
