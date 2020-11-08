@@ -11,7 +11,6 @@
     @import "assets/css/style.css";
     @import "assets/css/bootstrap.min.css";
     @import "assets/css/blog-home.css";
-
 </style>
 
 <script>

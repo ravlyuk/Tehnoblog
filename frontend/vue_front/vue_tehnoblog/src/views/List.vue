@@ -48,7 +48,7 @@
                         </div>
                     </div>
 
-                    <Pagination :total="total" :page_size="page_size" @page-changed="loadListArticles"/>
+                    <Pagination :page="page" :total="total" :page_size="page_size" @page-changed="changePage"/>
 
                 </div>
 
@@ -58,7 +58,7 @@
                     <Search/>
 
                     <!-- Sidebar Rubric Column -->
-                    <Rubric :rubrics="rubrics" @page-changed="loadListRubrics"/>
+                    <Rubric/>
 
                     <!-- Side Widget Column -->
                     <Widget/>
@@ -72,15 +72,15 @@
 </template>
 
 <script>
-    import {getRubrics, getArticles} from '../router/requests.js';
+    import {getArticles} from '../router/requests.js';
     import Pagination from "../components/Pagination";
     import Rubric from "../components/Rubric";
     import Search from "../components/Search";
     import Widget from "../components/Widget";
 
     export default {
-        name: 'Home',
-        props: ['id', 'rubrics'],
+        name: 'List',
+        props: ['id'],
         data() {
             return {
                 listArticle: [],
@@ -88,32 +88,31 @@
                 page: 1,
                 total: 0,
                 page_size: 0,
-                rubrics: this.rubrics,
             }
         },
         components: {Search, Pagination, Rubric, Widget},
         created() {
-            this.loadListArticles(this.page);
-            this.loadListRubrics();
+            this.loadListArticles();
+        },
+        watch: {
+          id: function() {
+            this.changePage(1);
+          }
         },
         methods: {
-            async loadListArticles(pageNumber) {
-                this.getlistArticle = await getArticles(this.$store.getters.getServerUrl, this.id, pageNumber);
-                this.listArticle = this.getlistArticle.results;
-                this.total = this.getlistArticle.count;
-                this.page_size = this.getlistArticle.page_size;
-            },
-            goTo(id) {
-                this.$router.push({name: 'Single', params: {id: id}})
-            },
             getLinkTo(id) {
               return {name: 'Single', params: {id: id}}
             },
-            async loadListRubrics() {
-                this.getrubrics = await getRubrics(this.$store.getters.getServerUrl);
-                this.rubrics = this.getrubrics.results
+            changePage(pageNumber) {
+              this.page = pageNumber;
+              this.loadListArticles();
             },
-
+            async loadListArticles() {
+                this.getlistArticle = await getArticles(this.$store.getters.getServerUrl, this.id, this.page);
+                this.listArticle = this.getlistArticle.results;
+                this.total = this.getlistArticle.count;
+                this.page_size = this.getlistArticle.page_size;
+            }
         }
     }
 </script>

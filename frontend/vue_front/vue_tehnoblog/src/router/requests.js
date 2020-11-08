@@ -7,7 +7,7 @@ export const getArticles = (backendUrl, id, pageNumber) => {
         )
     } else {
         return fetch(
-            `${backendUrl}/article?page=${pageNumber}`
+            `${backendUrl}/article/?page=${pageNumber}`
         )
     }
 
@@ -15,13 +15,13 @@ export const getArticles = (backendUrl, id, pageNumber) => {
 
 export const getSingleArticle = (backendUrl, id) => {
     return fetch(
-        `${backendUrl}/article/${id}`
+        `${backendUrl}/article/${id}/`
     )
 }
 
 export const getRubrics = (backendUrl) => {
     return fetch(
-        `${backendUrl}/rubric?limit=20`
+        `${backendUrl}/rubric/?limit=20`
     )
 }
 

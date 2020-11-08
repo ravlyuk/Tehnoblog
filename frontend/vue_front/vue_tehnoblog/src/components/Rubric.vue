@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg">
                     <ul class="list-unstyled mb-0">
-                        <li v-for="rubric in rubrics" :key="rubric">
+                        <li v-for="rubric in rubrics" :key="rubric.id">
                           <router-link
                               class="link"
                               :to="{name: 'List', params: {id: rubric.id}}">{{rubric.name}}</router-link>
@@ -20,15 +20,24 @@
 
 <script>
 
+    import {getRubrics} from "@/router/requests";
+
     export default {
         name: "Rubric",
-        props: ['rubrics'],
-        methods: {
-            goTo(id) {
-                this.$router.push({name: 'List', params: {id: id}})
-            },
+      data() {
+          return {
+            rubrics: []
+          };
+      },
+      created() {
+        this.loadListRubrics()
+      },
+      methods: {
+          async loadListRubrics() {
+            const { results } = await getRubrics(this.$store.getters.getServerUrl);
+            this.rubrics = results;
+          }
         }
-
     }
 </script>
 
