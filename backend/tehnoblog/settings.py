@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", default='78=ml3+l)sv6dg78ya22)fnhj6c9$3g-mnt%^qh9%oc@f%i&yw')
 DEBUG = int(os.environ.get("DEBUG", default=1))
 # ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
-ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1', '192.168.99.100']
 
 # Application definition
 

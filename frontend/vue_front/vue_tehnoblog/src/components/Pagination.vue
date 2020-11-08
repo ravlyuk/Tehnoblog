@@ -3,22 +3,22 @@
         <ul class="pagination justify-content-center mb-4">
 
             <li class="page-item" :class="{disabled: currentPage === 1}">
-                <span class="page-link pagination" @click="changePage(1)">Первая</span>
+                <span class="page-link" @click="changePage(1)">Первая</span>
             </li>
             <li class="page-item" :class="{disabled: currentPage === 1}">
-                <span class="page-link pagination"  @click="changePage(currentPage - 1)">&larr; назад</span>
+                <span class="page-link"  @click="changePage(currentPage - 1)">&larr; назад</span>
             </li>
 
             <li class="page-item" v-for="p in totalPages">
-                <span class="page-link pagination" :class="{active: currentPage === p}"  @click="changePage(p)">{{p}}</span>
+                <span class="page-link" :class="{active: currentPage === p}"  @click="changePage(p)">{{p}}</span>
             </li>
 
             <li class="page-item" :class="{disabled: currentPage === totalPages}">
-                <span class="page-link pagination"  @click="changePage(currentPage + 1)">далее &rarr;</span>
+                <span class="page-link"  @click="changePage(currentPage + 1)">далее &rarr;</span>
             </li>
 
             <li class="page-item" :class="{disabled: currentPage === totalPages}">
-                <span class="page-link pagination"  @click="changePage(totalPages)">Последняя</span>
+                <span class="page-link"  @click="changePage(totalPages)">Последняя</span>
             </li>
 
         </ul>
@@ -52,8 +52,10 @@
 
 
 <style scoped>
-    .pagination {
+    .pagination li {
         color: #0062cc;
+        cursor: pointer;
+        padding: 0 5px;
     }
 
     .active {

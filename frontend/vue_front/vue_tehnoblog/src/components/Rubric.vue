@@ -7,7 +7,9 @@
                 <div class="col-lg">
                     <ul class="list-unstyled mb-0">
                         <li v-for="rubric in rubrics" :key="rubric">
-                            <a href="#" @click="goTo(rubric.id)">{{rubric.name}}</a>
+                          <router-link
+                              class="link"
+                              :to="{name: 'List', params: {id: rubric.id}}">{{rubric.name}}</router-link>
                         </li>
                     </ul>
                 </div>
@@ -19,7 +21,7 @@
 <script>
 
     export default {
-        name: "List",
+        name: "Rubric",
         props: ['rubrics'],
         methods: {
             goTo(id) {
@@ -31,5 +33,9 @@
 </script>
 
 <style scoped>
+
+.link {
+  text-decoration: none;
+}
 
 </style>

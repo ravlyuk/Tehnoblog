@@ -12,14 +12,23 @@
 
                     <!-- Blog Post -->
                     <div v-for="article in listArticle" :key="article.id" class="card mb-4">
-                        <img class="card-img-top" :src="article.picture" alt="Card image cap" href="#"
-                             @click="goTo(article.id)">
+                        <router-link
+                            class="link"
+                            :to="getLinkTo(article.id)"
+                        >
+                          <img class="card-img-top" :src="article.picture" alt="Card image cap">
+                        </router-link>
                         <div class="card-body">
                             <h3 class="card-title">
-                                <a href="#" @click="goTo(article.id)">{{ article.title }}</a>
+                                <router-link
+                                    class="link"
+                                    :to="getLinkTo(article.id)"
+                                >
+                                  {{ article.title }}
+                                </router-link>
                             </h3>
                             <p class="card-text">{{ article.content.substring(0,400)+".." }}</p>
-                            <a href="#" @click="goTo(article.id)" class="btn btn-primary">Читать далее &rarr;</a>
+                            <router-link :to="getLinkTo(article.id)" class="btn btn-primary">Читать далее &rarr;</router-link>
                         </div>
                         <div class="card-footer text-muted">
                             Опубликовано: 29 октября 2020, автор:
@@ -97,7 +106,9 @@
             goTo(id) {
                 this.$router.push({name: 'Single', params: {id: id}})
             },
-
+            getLinkTo(id) {
+              return {name: 'Single', params: {id: id}}
+            },
             async loadListRubrics() {
                 this.getrubrics = await getRubrics(this.$store.getters.getServerUrl);
                 this.rubrics = this.getrubrics.results
@@ -106,3 +117,11 @@
         }
     }
 </script>
+
+<style scoped>
+
+.link {
+  text-decoration: none;
+}
+
+</style>
