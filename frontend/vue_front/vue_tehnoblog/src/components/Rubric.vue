@@ -6,8 +6,10 @@
             <div class="row">
                 <div class="col-lg">
                     <ul class="list-unstyled mb-0">
-                        <li v-for="rubric in rubrics" :key="rubric">
-                            <a href="#" @click="goTo(rubric.id)">{{rubric.name}}</a>
+                        <li v-for="rubric in rubrics" :key="rubric.id">
+                          <router-link
+                              class="link"
+                              :to="{name: 'List', params: {id: rubric.id}}">{{rubric.name}}</router-link>
                         </li>
                     </ul>
                 </div>
@@ -18,18 +20,31 @@
 
 <script>
 
-    export default {
-        name: "List",
-        props: ['rubrics'],
-        methods: {
-            goTo(id) {
-                this.$router.push({name: 'List', params: {id: id}})
-            },
-        }
+    import {getRubrics} from "@/router/requests";
 
+    export default {
+        name: "Rubric",
+      data() {
+          return {
+            rubrics: []
+          };
+      },
+      created() {
+        this.loadListRubrics()
+      },
+      methods: {
+          async loadListRubrics() {
+            const { results } = await getRubrics(this.$store.getters.getServerUrl);
+            this.rubrics = results;
+          }
+        }
     }
 </script>
 
 <style scoped>
+
+.link {
+  text-decoration: none;
+}
 
 </style>

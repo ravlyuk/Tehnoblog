@@ -46,7 +46,7 @@
                     <Search/>
 
                     <!-- Sidebar Rubric Column -->
-                    <Rubric :rubrics="rubrics" @page-changed="loadListRubrics"/>
+                    <Rubric/>
 
                     <!-- Side Widget Column -->
                     <Widget/>
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-    import {getRubrics, getSingleArticle} from "../router/requests";
+    import {getSingleArticle} from "../router/requests";
     import Comment from '../components/Comment';
     import Rubric from "../components/Rubric";
     import Search from "../components/Search";
@@ -79,17 +79,11 @@
         },
         created() {
             this.loadArticle();
-            this.loadListRubrics();
         },
         methods: {
             async loadArticle() {
                 this.article = await getSingleArticle(this.$store.getters.getServerUrl, this.id);
-            },
-
-            async loadListRubrics() {
-                this.getrubrics = await getRubrics(this.$store.getters.getServerUrl);
-                this.rubrics = this.getrubrics.results
-            },
+            }
         }
     }
 </script>
