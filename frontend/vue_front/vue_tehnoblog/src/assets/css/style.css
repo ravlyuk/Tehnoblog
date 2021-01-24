@@ -57,3 +57,7 @@
 .link {
     text-decoration: none;
 }
+
+.ck.ck-editor__main>.ck-editor__editable {
+    height: 200px;
+}

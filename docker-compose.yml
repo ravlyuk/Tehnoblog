@@ -8,3 +8,5 @@ services:
       - ./backend/:/usr/src/app/
     ports:
       - 8000:8000
+
+# sudo chown $USER /var/run/docker.sock

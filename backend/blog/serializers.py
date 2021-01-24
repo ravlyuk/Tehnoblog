@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Article, Comment, Rubric, Rating
+from drf_extra_fields.fields import Base64ImageField
 
 
 class RecursiveSerializer(serializers.Serializer):
@@ -76,6 +77,8 @@ class ArticleSerialazer(serializers.ModelSerializer):
 
 
 class CreateUpdateArticleSerialazer(serializers.ModelSerializer):
+    picture = Base64ImageField(default="article/default/750x300.png")
+
     class Meta:
         model = Article
         fields = (
