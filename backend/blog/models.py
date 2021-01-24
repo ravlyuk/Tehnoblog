@@ -30,8 +30,7 @@ class Article(models.Model):
         Rubric, null=True, on_delete=models.PROTECT, verbose_name="Рубрика", related_name='rubric_name'
     )
 
-    picture = models.ImageField("Изображение", null=False, default="article/default/750x300.png",
-                                upload_to="article/")
+    picture = models.ImageField("Изображение", null=False, default="article/default/750x300.png", upload_to="article/")
 
     def __str__(self):
         return self.title

@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django_filters',
     'djoser',
     'corsheaders',
+    'drf_extra_fields',
 ]
 
 MIDDLEWARE = [

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Single from '../views/Single.vue'
 import List from '../views/List.vue'
 import About from '../views/About.vue'
+import Login from '../views/Login.vue'
 
 
 Vue.use(VueRouter)
@@ -12,6 +13,11 @@ export const routes = [
         path: '/',
         name: 'Home',
         component: List
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login,
     },
     {
         path: '/article/:id',
@@ -48,6 +54,14 @@ export const routes = [
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '../views/Contacts.vue')
+    },
+    {
+        path: '/add',
+        name: 'Add',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "AddArticle" */ '../views/AddArticle.vue')
     }
 ]
 

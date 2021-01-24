@@ -25,6 +25,14 @@ export const getRubrics = (backendUrl) => {
     )
 }
 
+
+// export const getAccessTocken = (backendUrl) => {
+//     return fetch(
+//         `${backendUrl}/api/token`
+//     )
+// }
+
+
 // export const getArticlesByRubric = (backendUrl, rubricId, pageNumber) => {
 //     return fetch(
 //         `${backendUrl}/rubric/${rubricId}/?page=${pageNumber}`
